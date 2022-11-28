@@ -1,0 +1,65 @@
+﻿@page
+@model MyComputerStore.Pages.Clients.createModel
+@{
+    <!--new client-->
+
+}
+<br>
+<h2>NEW CLIENT</h2> 
+@if (Model.errorMessage.Length > 0)
+{
+    <div class='alert alert-warning alert-dismissible fade show' role='alert'>
+        <strong>@Model.errorMessage</strong>
+        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+    </div>
+}
+<form method="post">
+    <div class="row mb-3 ">
+        <label class=" col-sm-3 col-form-label">NAME</label>
+        <div class="col-sm-6">
+            <input type ="text" class="form-control" name="name" value="@Model.ClientInfo.name">
+        </div>
+    </div>
+    <div class="row mb-3 ">
+        <label class=" col-sm-3 col-form-label">EMAIL</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="email" value="@Model.ClientInfo.email">
+        </div>
+    </div>
+    <div class="row mb-3 ">
+        <label class=" col-sm-3 col-form-label">PHONE NUMBER</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="phone" value="@Model.ClientInfo.phone">
+        </div>
+    </div>
+    <div class="row mb-3 ">
+        <label class=" col-sm-3 col-form-label">ADDRESS</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="address" value="@Model.ClientInfo.address">
+        </div>
+    </div>
+    @if (Model.successMessage.Length > 0)
+    {// if greater then zero new client will be added
+        
+        <div class="row mb-3">
+            <div class="col-sm-9">
+                <div class='alert alert-success alert-dismissible fade show' role='alert'>
+                    <strong>@Model.successMessage</strong>
+                    <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='close'></button>
+                </div>
+            </div>
+        </div>
+    }
+
+
+
+    <!--submit button-->
+    <div class="row mb-3 ">
+         <div class=" offset-sm-3 col-sm-3 d-grid">
+            <button type ="submit" class="btn btn-primary">SUBMIT!</button>
+        </div>
+        <div class="col-sm-3 d-grid">
+            <a class="btn btn-outline-primary" href="/" role="button=">Cancel</a>
+        </div>
+    </div>
+</form>

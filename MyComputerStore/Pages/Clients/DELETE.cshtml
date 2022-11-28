@@ -1,0 +1,31 @@
+﻿@page
+@using System.Data.SqlClient;
+@inject SqlConnection _connection;
+
+@{
+
+    try
+    {
+        string id = Request.Query["id"];
+
+        
+        using (_connection)
+        {
+            _connection.Open();
+
+            String sql = "DELETE FROM clients Where id=@id";
+            using (SqlCommand command = new SqlCommand(sql, _connection))
+            {
+                command.Parameters.AddWithValue("@id", id);
+                command.ExecuteNonQuery();
+            }
+        }
+
+    }
+    catch (Exception ex)
+    {
+
+
+    }
+    Response.Redirect("/Clients/Index");
+}
